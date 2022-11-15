@@ -14,7 +14,7 @@ All the code written in this repository uses the Python programming language.
 
 ## Extract module
 
-The video in question shows the operator wearing a glove with colored fingertips (one orange and one green). The operator then draws anything on a flat surface using one of the colors.
+The application will take a video, where it will show the operator wearing a glove with colored fingertips (one orange and one green). The operator then draws anything on a flat surface using one of the colors.
 
 The video will be color filtered using the OpenCv library. The threshold values were obtained using a [color detection script](https://toptechboy.com/tracking-an-object-based-on-color-in-opencv/) from a tutorial.  
 
