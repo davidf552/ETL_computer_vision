@@ -24,7 +24,7 @@ The “erode” process will erase a lot of the noise that gets in the recording
 Once all the above methods are applied, two masks are created. One for the orange color and another for the green color.
 
 
-Moments are computed for each mask, in order for the application to detect when any of them are on the recording. This will end with two results:
+Moments are computed for each mask. This is done so the application knows when any of them show into the recording. This will end with two results:
 
 
 - If the orange color is on the screen, the coordinates of the center of the color circle (x,y,0) will be saved inside a file called “movements.csv”.
