@@ -29,7 +29,7 @@ points_df.plot(x = 'x', y = 'y')
 max_x = points_df['x'].max()
 min_x = points_df['y'].min()
 
-plt.title('Drawing')
+plt.title('Picture to draw')
 
 plt.show()
 
