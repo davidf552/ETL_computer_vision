@@ -5,16 +5,16 @@ This project aims to program a Kawasaki Robotic Arm using a video camera. ***How
 
 Basically, the repository contains code to do the following:
 
-- Extracts coordinates from a video and prints them into a file.
-- Transforms the previous data into AS language.
+- [Extracts](#extract-module) coordinates from a video and prints them into a file.
+- [Transforms](#transform-module) the previous data into AS language.
 - Loads the resulting file into a MongoDB collection.
-- Downloads the code into the computer connected to the robot and sends the instructions.
+- [Downloads](downloader.py) the code into the computer connected to the robot and [sends](#load-module) the instructions.
 
 All the code written in this repository uses the Python programming language.
 
 ## Extract module
 
-The application will take a video, where it will show the operator wearing a glove with colored fingertips (one orange and one green). The operator then draws anything on a flat surface using one of the colors.
+The [application](camera_drawing.py) will take a video, where it will show the operator wearing a glove with colored fingertips (one orange and one green). The operator then draws anything on a flat surface using one of the colors.
 
 The video will be color filtered using the *OpenCv* library. The threshold values were obtained using a [color detection script](https://toptechboy.com/tracking-an-object-based-on-color-in-opencv/) from a tutorial.  
 
@@ -39,11 +39,13 @@ Moments are computed for each mask. This is done so the application knows the mo
 ### Graph module
 
 It is important to know if the capture procedure worked as intended. A picture made from the coordinates "x" and "y" is a good way to tell.
-This script will take the data file "movements.csv" and put the coordinates on a Pandas data frame. Then it will draw the figure using the library *Matplotlib.* 
+This [script](plot_points.py) will take the data file "movements.csv" and put the coordinates on a Pandas data frame. Then it will draw the figure using the library *Matplotlib.* 
 
 
 ![Figure_draw](https://user-images.githubusercontent.com/103103116/202120869-04f62e48-f306-443e-9973-24d8eaeff5a5.jpeg)
 
+
+[Return](#introduction)
 ## Transform module
 
 Once the coordinates are obtained from the previous module, it is now time to turn them into robot language. 
@@ -73,14 +75,19 @@ To send the instructions, the script uses the library *Pymongo* and the users cr
 ![mongodb](https://user-images.githubusercontent.com/103103116/202111315-ea3a2417-5320-4b59-ac29-9a675a06ce60.PNG)
 
 
+This [script](creating_robot_file.py) has the conversion into AS instruction, as well as the uploading data to MongoDB Atlas.
+
+
+[Return](#introduction)
 ## Load module
 
-The computer connected to the robot must receive the instruction set file in order to proceed. The library *Pymongo* is once again used to download the whole collection inside a Pandas data frame. Then a new file will be created, this time inside the target computer.
+The computer connected to the robot must receive the instruction set file in order to proceed. This [Python file](downloader.py) does the work. The library *Pymongo* is once again used to download the whole collection inside a Pandas data frame. Then a new file will be created, this time inside the target computer.
+
 
 ### Client/server connection
  
 To send the instructions, a TCP/IP connection will be required. This is done using the library *socket* and knowing the IP of the robot in advance.
-Since there is not a robot to use the script directly, the instructions will be sent to an Ubuntu Server that will serve as a target.
+Since there is not a robot to use the script directly, the instructions will be [sent](server.py) to an Ubuntu Server that will serve as a [target.](client.py)
 
 
 The file was downloaded successfully:
@@ -93,6 +100,7 @@ The commands were sent to the target:
 ![client](https://user-images.githubusercontent.com/103103116/202116091-f1e0f427-4cf2-4673-b6ec-c8d6b70961bb.PNG)
 
 
+[Return](#introduction)
 ## Technology used
 
 - Python version 3.11.0.
