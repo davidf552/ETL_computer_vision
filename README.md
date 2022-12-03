@@ -36,6 +36,10 @@ Moments are computed for each mask. This is done so the application knows the mo
 ![points](https://user-images.githubusercontent.com/103103116/202120386-37b40f48-54ed-479f-a98a-ae1c9d2fcca3.PNG)
 
 
+### Note
+There is also a [version](camera.cpp) written in C++, however it requires the use of an industrial camera. Some of the code is written in Spanish since it was the original code used for my Electrical Engineer capstone project back in Ecuador.
+
+
 ### Graph module
 
 It is important to know if the capture procedure worked as intended. A picture made from the coordinates "x" and "y" is a good way to tell.
